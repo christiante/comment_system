@@ -1,6 +1,6 @@
 <?php
 
-	date_default_timezone_set('Asia/Almaty');
+	date_default_timezone_set('Indian/Antananarivo');
 
 	$dbhost = 'localhost';
 	$dbuser = 'root';
