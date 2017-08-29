@@ -1,6 +1,6 @@
 <?php
 
-	require_once('app/connection.php');
+/*	require_once('app/connection.php');
 	require_once('app/includes.php');
 
 
@@ -17,4 +17,9 @@
 
 	require_once('views/layout.php');
 
-?>
+?> */
+
+require 'app/Router.php';
+
+$router = new Router();
+$router->routeRequest();
