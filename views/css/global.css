@@ -1,0 +1,173 @@
+/* ------------------------
+	      Global
+------------------------ */
+
+body {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar {
+	margin-top: 20px;
+}
+
+footer {
+	width: 100%;
+	border-top: dotted 1px #333;
+	margin-top: 50px;
+	padding: 20px;
+	text-align: center;
+}
+
+ul.nav.navbar-nav li>a {
+	font-size: 16px;
+	color: #fff;
+}
+
+
+
+
+
+/* ------------------------
+	   Comments box
+------------------------ */
+
+.comment {
+	width: 500px;
+    height: auto;
+    padding: 0px 0px;
+    margin: 30px auto;
+    margin-bottom: 40px;
+    text-align: justify;
+}
+
+.comments_total {
+    clear: both;
+    padding: 6px 0;
+    width: 500px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+}
+
+textarea.form-control {
+    margin-bottom: 10px;
+	border-radius: 0;
+}
+
+.btn {
+	border-radius: 0;
+}
+
+.child {
+	margin-top: 10px;
+	margin-left: 30px;
+	padding-left: 5px;
+}
+
+.child-comments {
+	border-left: 1px solid rgba(1, 1, 1, 0.2);
+}
+
+form.main {
+	width: 500px;
+	margin: 0 auto;
+	margin-top: 5px;
+	padding-bottom: 20px;
+	border-bottom: solid 1px #ccc;
+}
+
+.form-input {
+	border: 1px solid rgba(1, 1, 1, 0.3);
+	width: 50%;
+	padding: 4px 7px;
+	font-size: 13px;
+	line-height: 24px;
+	resize: none;
+}
+
+.form-text {
+	border: 1px solid rgba(1, 1, 1, 0.3);
+	width: 100%;
+	padding: 4px 7px;
+	margin-top: 5px;
+	font-size: 13px;
+	line-height: 24px;
+	resize: none;
+	transition: ease 0.2s all;
+	outline: none !important;
+}
+
+.form-text-error {
+	border-color: rgba(237, 28, 36, 0.7);
+	animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+	transform: translate3d(0, 0, 0);
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+.form-text:focus {
+	border-color: rgba(0, 114, 188, 0.7);
+}
+
+.form-submit {
+	text-transform: uppercase;
+	border: 1px solid rgba(1, 1, 1, 0.3);
+	cursor: pointer;
+	padding: 5px 13px;
+	margin-top: 5px;
+}
+
+.user,
+.time {
+	display: inline-block;
+}
+
+.user {
+	font-size: 13px;
+	color: #0072bc;
+	text-decoration: none;
+	word-break: break-all;
+	line-height: 17px;
+}
+
+.time {
+	font-size: 11px;
+	color: #b2b1b1;
+	transition: ease 0.2s all;
+}
+
+.comment:hover .time {
+	color: #767676;
+}
+
+.comment-text {
+	font-size: 13px;
+    line-height: 17px;
+    color: #222;
+    margin: 0px 0px;
+    padding-bottom: 10px;
+    border-bottom: dotted 1px #ccc;
+}
+
+.link-reply {
+	font-size: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #222;
+    cursor: pointer;
+    transition: ease 0.3s all;
+    color: #dddddd;
+    float: right;
+    margin-top: -10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    background-color: #333;
+    padding: 2px 15px;
+    border-radius: 50px;
+	outline: none;
+}
+.link-reply:hover {
+	color: #333;
+	background-color: #ccc;
+	text-decoration: none;
+}
