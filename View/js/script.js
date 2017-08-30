@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('#add-comment').click(function(){
+        $('#submitBtn').click();
         $.post(
             'index.php?controller=comment&action=addcomment&id='+$(this).data('post-id'),
             {
@@ -17,6 +18,7 @@ $(document).ready(function () {
     });
     
     $('#add-post').click(function(){
+        $('#submitBtnPost').click();
         $.post(
             'index.php?controller=post&action=addpost',
             {

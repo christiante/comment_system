@@ -14,10 +14,13 @@
 <?php } ?>
 
 <h2>Add New Post</h2><br/>
-<p><label for="author">Author:</label><br />
+<form id="add-post-form" method="post" action="">
+    <p><label for="author">Author:</label><br />
     <input type="text" name="author" id="author" required="required" />
-</p>
-<p><label for="content">Your Post:</label><br />
-    <textarea name="content" id="content" rows="5" cols="35" required="required"></textarea>
-</p>
-<p><input id="add-post" type="button" name="post_submit" value="Add Post"/></p>
+    </p>
+    <p><label for="content">Your Post:</label><br />
+        <textarea name="content" id="content" rows="5" cols="35" required="required"></textarea>
+    </p>
+    <p><input id="add-post" type="button" name="post_submit" value="Add Post"/></p>
+    <input type="submit" id="submitBtnPost" name="submitBtnPost" style="display:none;">
+</form>

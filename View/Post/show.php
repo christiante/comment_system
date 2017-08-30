@@ -11,6 +11,7 @@
         <textarea name="comment" id="comment" rows="5" cols="35" required="required"></textarea>
     </p>
     <p><input id="add-comment" type="button" name="add_submit" data-post-id="<?php echo $post->id; ?>" value="Add Comment"/></p>
+    <input type="submit" id="submitBtn" name="submitBtn" style="display:none;">
 </form>
 <div class="comments-container">
 <?php foreach($comments as $comment) { ?>
