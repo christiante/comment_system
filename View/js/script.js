@@ -13,4 +13,19 @@ $(document).ready(function () {
             }
         });
     });
+    
+    $('#add-post').click(function(){
+        $.post(
+            'index.php?controller=post&action=addpost',
+            {
+                'author' : $('#author').val(),
+                'content' : $('#content').val()
+            }
+        ).done(function(data) {
+            var dataObject = JSON.parse(data);
+            if (dataObject.status) {
+                $('.post-container').prepend(dataObject.html);
+            }
+        });
+    });
 });

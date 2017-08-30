@@ -42,7 +42,6 @@ class CommentController extends Controller
             $censoredCommentData = json_encode(["status" => 0]);
             $commentData = $this->securityChecker->wordsFilter($comment) == "" ? $filteredCommentData : $censoredCommentData;
             $comment = $this->securityChecker->wordsFilter($comment) == "" ? $comment : $this->securityChecker->wordsFilter($comment);
-
             $data = [
                 'user' => $username,
                 'text' => $comment,
@@ -60,9 +59,9 @@ class CommentController extends Controller
         }
     }
     
-    public function listsCommentCensured()
+    public function listsCommentCensored()
     {
-        $comments = $this->comment->getCommentCensured();
+        $comments = $this->comment->getCommentCensored();
         $this->genererVue(array('comments' => $comments));
     }
 }

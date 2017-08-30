@@ -13,7 +13,7 @@ class Comment
 
     public function getPostComments($postId)
     {
-        $request = $this->db->prepare('SELECT * FROM comments WHERE post_id = :postId ORDER BY date DESC');
+        $request = $this->db->prepare('SELECT * FROM comments WHERE post_id = :postId AND is_spam = 0 ORDER BY date DESC');
         $request->bindParam(':postId', $postId, \PDO::PARAM_INT);
         $request->execute();
         return $request->fetchAll(\PDO::FETCH_OBJ);
@@ -27,7 +27,7 @@ class Comment
         return $stmt->execute($data);
     }
     
-    public function getCommentCensured()
+    public function getCommentCensored()
     {
         $response = $this->db->query('SELECT * FROM comments WHERE is_spam = 1');
 
