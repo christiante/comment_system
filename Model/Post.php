@@ -11,15 +11,6 @@ class Post
         $this->db = new Db();
     }
 
-    /*public function get($iOffset, $iLimit)
-    {
-        $oStmt = $this->oDb->prepare('SELECT * FROM Posts ORDER BY createdDate DESC LIMIT :offset, :limit');
-        $oStmt->bindParam(':offset', $iOffset, \PDO::PARAM_INT);
-        $oStmt->bindParam(':limit', $iLimit, \PDO::PARAM_INT);
-        $oStmt->execute();
-        return $oStmt->fetchAll(\PDO::FETCH_OBJ);
-    }*/
-
     public function getAll()
     {
         $response = $this->db->query('SELECT * FROM posts ORDER BY author DESC');
@@ -33,6 +24,25 @@ class Post
         $request->bindParam(':postId', $id, \PDO::PARAM_INT);
         $request->execute();
         return $request->fetch(\PDO::FETCH_OBJ);
+    }
+
+    public function getLastPostId()
+    {
+        $stmt = $this->db->query('SELECT MAX(id) FROM posts');
+        $lastId = $stmt->fetchColumn();
+        if (!empty($lastId)) {
+            return $lastId;
+        } else {
+            $content = 'In his tractibus navigerum nusquam visitur flumen sed in locis plurimis aquae suapte natura
+            calentes emergunt ad usus aptae multiplicium medelarum. verum has quoque regiones pari sorte Pompeius
+            Iudaeis domitis et Hierosolymis captis in provinciae speciem delata iuris dictione formavit.';
+
+            $this->addPost(['author' => 'Lorem', 'content' => $content]);
+            $stmt = $this->db->query('SELECT MAX(id) FROM posts');
+            $lastId = $stmt->fetchColumn();
+
+            return $lastId;
+        }
     }
 
     public function addPost($data)

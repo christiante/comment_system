@@ -26,8 +26,14 @@ class PostController extends Controller
 
     public function show()
     {
-        $post = $this->post->getById($this->request->getParameter("id"));
-        $comments = $this->comment->getPostComments($this->request->getParameter("id"));
+        if ($this->request->parameterExist("id")) {
+            $postId = $this->request->getParameter("id");
+        } else {
+            $postId = $this->post->getLastPostId();
+        }
+
+        $post = $this->post->getById($postId);
+        $comments = $this->comment->getPostComments($postId);
 
         $this->genererVue(
             [
