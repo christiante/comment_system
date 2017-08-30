@@ -49,4 +49,10 @@ class CommentController extends Controller
             echo json_encode(["status" => 0]);
         }
     }
+    
+    public function listsCommentCensured()
+    {
+        $comments = $this->comment->getCommentCensured();
+        $this->genererVue(array('comments' => $comments));
+    }
 }

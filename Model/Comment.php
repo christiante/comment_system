@@ -26,4 +26,11 @@ class Comment
         );
         return $stmt->execute($data);
     }
+    
+    public function getCommentCensured()
+    {
+        $response = $this->db->query('SELECT * FROM comments WHERE is_spam = 1');
+
+        return $response->fetchAll(\PDO::FETCH_OBJ);
+    }
 }
