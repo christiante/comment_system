@@ -18,4 +18,12 @@ class Comment
         $request->execute();
         return $request->fetchAll(\PDO::FETCH_OBJ);
     }
+
+    public function addComment($data)
+    {
+        $stmt = $this->db->prepare(
+            'INSERT INTO comments (user, text, date, post_id, is_spam) VALUES (:user, :text, :date, :post_id, :is_spam)'
+        );
+        return $stmt->execute($data);
+    }
 }
