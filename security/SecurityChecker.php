@@ -5,7 +5,7 @@ class SecurityChecker
 
     public function wordsFilter($commentText) 
     {
-        $badWordsArray = file('keywords.txt');
+        $badWordsArray = file('security/keywords.txt');
         $badWordsPattern='/(\b'.implode('\b)|(\b', $badWordsArray).'\b)/i';
         $badWordsPattern = preg_replace('[\r\n]', '', $badWordsPattern);       
 

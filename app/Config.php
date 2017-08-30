@@ -7,6 +7,5 @@ final class Config
         DB_NAME = 'comment_system',
         DB_USR = 'root',
         DB_PWD = 'rootman',
-
         SITE_NAME = 'Comment System';
 }

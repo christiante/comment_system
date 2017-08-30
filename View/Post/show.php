@@ -18,7 +18,7 @@
         <b>User: <?php echo $comment->user; ?></b><br/>
 
         <?php echo $comment->text; ?><br/>
-        <?php echo $comment->date; ?><br/>
+        <?php echo $util->timeElapsedString($comment->date); ?><br/>
     </div>
 <?php } ?>
 </div>

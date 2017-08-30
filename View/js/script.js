@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $('#add-comment').click(function(){
         $.post(
-            'index.php?controller=comment&action=addcomment&id=1',
+            'index.php?controller=comment&action=addcomment&id='+$(this).data('post-id'),
             {
                 'username' : $('#username').val(),
                 'comment' : $('#comment').val()
@@ -9,7 +9,7 @@ $(document).ready(function () {
         ).done(function(data) {
             var dataObject = JSON.parse(data);
             if (dataObject.status) {
-                $(dataObject.html).hide().insertBefore('.comment-box').slideDown();
+                $('.comments-container').prepend(dataObject.html);
             }
         });
     });
