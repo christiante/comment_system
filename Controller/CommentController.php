@@ -41,6 +41,7 @@ class CommentController extends Controller
             $filteredCommentData = json_encode(["status" => 1, "html" => $html]);
             $censoredCommentData = json_encode(["status" => 0]);
             $commentData = $this->securityChecker->wordsFilter($comment) == "" ? $filteredCommentData : $censoredCommentData;
+            $comment = $this->securityChecker->wordsFilter($comment) == "" ? $comment : $this->securityChecker->wordsFilter($comment);
 
             $data = [
                 'user' => $username,
