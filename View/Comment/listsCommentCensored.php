@@ -1,4 +1,4 @@
-<h2>Censured list</h2><br/>
+<h2>Censored list</h2><br/>
 
 
 <?php foreach($comments as $comment) { ?>

@@ -59,9 +59,9 @@ class CommentController extends Controller
         }
     }
     
-    public function listsCommentCensured()
+    public function listsCommentCensored()
     {
-        $comments = $this->comment->getCommentCensured();
+        $comments = $this->comment->getCommentCensored();
         $this->genererVue(array('comments' => $comments));
     }
 }

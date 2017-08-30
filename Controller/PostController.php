@@ -37,4 +37,28 @@ class PostController extends Controller
             ]
         );
     }
+    
+    public function addPost()
+    {
+        if (!empty($this->request->getParameter("author")) && !empty($this->request->getParameter("content"))) {          
+            $author = $this->request->getParameter("author");
+            $content = $this->request->getParameter("content");
+
+            $html = "<div class=\"col-lg-4\">
+                    <b>Author:: " . $author . "</b><br/>
+                    " . $content . "<br/></div>";
+            $newPostData = json_encode(["status" => 1, "html" => $html]);
+            $data = [
+                'author' => $author,
+                'content' => $content,
+            ];
+
+            try {
+                $this->post->addPost($data);
+                echo $newPostData;
+            } catch (\Exception $e) {
+                echo json_encode(["status" => 0, "error-message" => $e->getMessage()]);
+            }
+        }
+    }
 }

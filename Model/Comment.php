@@ -27,7 +27,7 @@ class Comment
         return $stmt->execute($data);
     }
     
-    public function getCommentCensured()
+    public function getCommentCensored()
     {
         $response = $this->db->query('SELECT * FROM comments WHERE is_spam = 1');
 
