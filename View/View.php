@@ -25,7 +25,7 @@ class View
         // Génération de la partie spécifique de la vue
         $content = $this->generateFile($this->fichier, $data);
         // Génération du gabarit commun utilisant la partie spécifique
-        $view = $this->generateFile('View/gabarit.php',
+        $view = $this->generateFile('View/layout.php',
             array('titre' => $this->titre, 'contenu' => $content));
         // Renvoi de la vue au navigateur
         echo $view;

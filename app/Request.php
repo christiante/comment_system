@@ -2,14 +2,25 @@
 
 class Request
 {
+    /**
+     * @var
+     */
     private $parameters;
 
+    /**
+     * Request constructor.
+     * @param $parameters
+     */
     public function __construct($parameters)
     {
         $this->parameters = $parameters;
     }
 
-    // Renvoie vrai si le paramètre existe dans la requête
+    /**
+     * @param $name
+     *
+     * @return bool
+     */
     public function parameterExist($name)
     {
         return (isset($this->parameters[$name]) && $this->parameters[$name] != "");
