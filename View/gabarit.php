@@ -9,6 +9,7 @@
         <div id="global">
             <header>
                 <a href="index.php"><h1 id="titreBlog">Comment System</h1></a>
+                <a href='?controller=comment&action=listsCommentCensured'>List Censured Comment</a>
             </header>
             <div id="contenu">
                 <?= $contenu ?>
