@@ -5,7 +5,7 @@
 
 	<div class="col-lg-4">
 		<b>Author: <?php echo $comment->user; ?></b><br/>
-                <?php echo $comment->text; ?><br/>
+                <?php echo html_entity_decode($comment->text); ?><br/>
                 <?php echo $comment->date; ?><br/>
 
 	</div>
