@@ -39,7 +39,8 @@ class CommentController extends Controller
                                 " . $comment . "<br/>
             " . $this->util->timeElapsedString('now') . "<br/></div>";
             $filteredCommentData = json_encode(["status" => 1, "html" => $html]);
-            $censoredCommentData = json_encode(["status" => 0]);
+            $htmlCensored = "<script>alert('Sorry, you comment content censored word. It will not shown in line.');location.reload();</script>";
+            $censoredCommentData = json_encode(["status" => 0, "html" => $htmlCensored]);
             $commentData = $this->securityChecker->wordsFilter($comment) == "" ? $filteredCommentData : $censoredCommentData;
             $comment = $this->securityChecker->wordsFilter($comment) == "" ? $comment : $this->securityChecker->wordsFilter($comment);
             $data = [

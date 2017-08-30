@@ -10,6 +10,8 @@ $(document).ready(function () {
             var dataObject = JSON.parse(data);
             if (dataObject.status) {
                 $('.comments-container').prepend(dataObject.html);
+            }else {
+                $('.comments-container').prepend(dataObject.html);
             }
         });
     });
