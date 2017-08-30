@@ -19,7 +19,7 @@ class SecurityChecker
             $result = str_replace($search, $replace, $commentText);
             return htmlentities($result);
         } else {
-            return $commentText;
+            return "";
         }
     }
 }
