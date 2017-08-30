@@ -1,0 +1,6 @@
+#unicode for internationalization
+AddDefaultCharset UTF-8
+
+# Rewrite URL xxx/yyy/zzz in index.php?controleur=xxx&action=yyy&id=zzz
+#RewriteEngine on
+#RewriteRule ^([a-zA-Z]*)/?([a-zA-Z]*)?/?([a-zA-Z0-9]*)?/?$ index.php?controleur=$1&action=$2&id=$3 [NC,L]
