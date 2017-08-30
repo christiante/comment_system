@@ -17,20 +17,20 @@
                 <div id="menubar">
                     <ul id="menu">
                         <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                        <li class="selected"><a href="index.html">Home</a></li>
+                        <li class="selected"><a href="index.php">Home</a></li>
                         <li><a href='?controller=comment&action=listsCommentCensored'>Censored Comments</a></li>
-                        <li><a href="page.html">A Page</a></li>
-                        <li><a href="another_page.html">Another Page</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href='?controller=post&action=index'>Post List</a></li>
                     </ul>
                 </div>
             </div>
-            <div id="contenu">
-                <?= $contenu ?>
-            </div> <!-- #contenu -->
-            <footer id="piedBlog">
-                Comment System made with PHP, HTML5 and CSS.
-            </footer>
+            <div id="site_content">
+                <div id="content">
+                    <?= $contenu ?>
+                </div>
+            </div>
+            <div id="footer">
+                Copyright &copy; | CCR
+            </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="View/js/script.js"></script>

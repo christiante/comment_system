@@ -14,10 +14,10 @@ class Router
             // Fusion des paramètres GET et POST de la requête
             $request = new Request(array_merge($_GET, $_POST));
 
-            $controleur = $this->creerControleur($request);
+            $controller = $this->creerControleur($request);
             $action = $this->creerAction($request);
 
-            $controleur->executerAction($action);
+            $controller->executerAction($action);
         }
         catch (Exception $e) {
             $this->gererErreur($e);
@@ -27,21 +27,21 @@ class Router
     // Crée le contrôleur approprié en fonction de la requête reçue
     private function creerControleur(Request $request)
     {
-        $controleur = "Post";  // Contrôleur par défaut
+        $controller = "Post";  // Contrôleur par défaut
         if ($request->parameterExist($this::CONTROLLER_PARAM_NAME)) {
-            $controleur = $request->getParameter($this::CONTROLLER_PARAM_NAME);
+            $controller = $request->getParameter($this::CONTROLLER_PARAM_NAME);
             // Première lettre en majuscule
-            $controleur = ucfirst(strtolower($controleur));
+            $controller = ucfirst(strtolower($controller));
         }
         // Création du nom du fichier du contrôleur
-        $classController = $controleur."Controller";
+        $classController = $controller."Controller";
         $fichierControleur = "Controller/" . $classController . ".php";
         if (file_exists($fichierControleur)) {
             // Instanciation du contrôleur adapté à la requête
             require($fichierControleur);
-            $controleur = new $classController();
-            $controleur->setRequete($request);
-            return $controleur;
+            $controller = new $classController();
+            $controller->setRequete($request);
+            return $controller;
         }
         else
             throw new Exception("Fichier '$fichierControleur' introuvable");
@@ -50,7 +50,7 @@ class Router
     // Détermine l'action à exécuter en fonction de la requête reçue
     private function creerAction(Request $request)
     {
-        $action = "index";  // Action par défaut
+        $action = "show";  // Action par défaut
         if ($request->parameterExist('action')) {
             $action = $request->getParameter('action');
         }
