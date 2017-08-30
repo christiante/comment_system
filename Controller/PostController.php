@@ -46,13 +46,16 @@ class PostController extends Controller
     
     public function addPost()
     {
-        if (!empty($this->request->getParameter("author")) && !empty($this->request->getParameter("content"))) {          
+        if ($this->request->parameterExist("author") && $this->request->parameterExist("content")) {
             $author = $this->request->getParameter("author");
             $content = $this->request->getParameter("content");
 
-            $html = "<div class=\"col-lg-4\">
-                    <b>Author:: " . $author . "</b><br/>
-                    " . $content . "<br/></div>";
+            $html = "<div>
+                    <b>Author:: " . $author . "</b>
+                    <p>
+                    " . $content . "
+                    </p>
+                    </div><br>";
             $newPostData = json_encode(["status" => 1, "html" => $html]);
             $data = [
                 'author' => $author,

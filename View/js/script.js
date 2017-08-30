@@ -10,6 +10,8 @@ $(document).ready(function () {
             var dataObject = JSON.parse(data);
             if (dataObject.status) {
                 $('.comments-container').prepend(dataObject.html);
+            } else {
+                alert('Sorry, you comment contains censored word. It will not be shown in live.');
             }
         });
     });
@@ -19,9 +21,10 @@ $(document).ready(function () {
             'index.php?controller=post&action=addpost',
             {
                 'author' : $('#author').val(),
-                'content' : $('#content').val()
+                'content' : $('#post-content').val()
             }
         ).done(function(data) {
+                console.log(data);
             var dataObject = JSON.parse(data);
             if (dataObject.status) {
                 $('.post-container').prepend(dataObject.html);
