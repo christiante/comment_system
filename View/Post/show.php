@@ -2,8 +2,8 @@
 <?php
   if (!empty($post)) {
 ?>
-<b><?php echo $post->author; ?></b><br/>
-<p><?php echo $post->content; ?></p>
+<div class="user"><?php echo $post->author; ?></div>
+<div class="post"><?php echo $post->content; ?></div>
 <h2>Comments</h2>
 <h5>Leave your comment below</h5>
 <form id="add-comment-form" method="post" action="">
@@ -24,10 +24,9 @@
 <div class="comments-container">
     <?php foreach ($comments as $comment) { ?>
         <div class="col-lg-4 comment-box">
-            <b>User: <?php echo $comment->user; ?></b><br/>
-
-            <?php echo $comment->text; ?><br/>
-            <?php echo $util->timeElapsedString($comment->date); ?><br/>
+            <div class="user">User: <?php echo $comment->user; ?></div>
+            <div class="post"><?php echo $comment->text; ?></div>
+            <div class="date"><?php echo $util->timeElapsedString($comment->date); ?></div>
         </div>
     <?php }
     } else { ?>

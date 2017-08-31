@@ -311,3 +311,23 @@ table tr td
     border-top: 1px solid #FFF;
 }
 
+.col-lg-4{
+    margin-bottom: 10px;
+}
+
+.col-lg-4 b{
+    color: #000;
+}
+
+.user{
+    color: #A4AA04;
+    font-weight: bold;
+}
+
+.post{
+    color: #000;
+}
+
+.date{
+    color: #BBB;
+}
