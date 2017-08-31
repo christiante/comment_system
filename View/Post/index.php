@@ -21,11 +21,13 @@
 
 <h2>Add New Post</h2>
 <form id="add-post-form" method="post" action="">
-    <p><label for="author">Author:</label><br />
-        <input type="text" name="author" id="author" required="required" />
-    </p>
-    <p><label for="content">Your Post:</label><br />
-        <textarea name="post-content" id="post-content" rows="5" cols="35" required="required"></textarea>
-    </p>
-    <p><input id="add-post" type="button" name="post_submit" value="Add Post"/></p>
+    <div class="form_settings">
+        <p><label for="author">Author:</label><br />
+            <input type="text" name="author" id="author" required="required" />
+        </p>
+        <p><label for="content">Your Post:</label><br />
+            <textarea name="post-content" id="post-content" rows="5" cols="35" required="required"></textarea>
+        </p>
+        <p><input id="add-post" class="submit" type="button" name="post_submit" value="Add Post"/></p>
+    </div>
 </form>
