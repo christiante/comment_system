@@ -16,7 +16,6 @@
                 </div>
                 <div id="menubar">
                     <ul id="menu">
-                        <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
                         <li class="selected"><a href="index.php">Home</a></li>
                         <li><a href='?controller=comment&action=listsCommentCensored'>Censored Comments</a></li>
                         <li><a href='?controller=post&action=index'>Post List</a></li>
@@ -29,7 +28,7 @@
                 </div>
             </div>
             <div id="footer">
-                Copyright &copy; | CCR
+                Copyright &copy; | Christiane Charly Ramiandramanjato
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

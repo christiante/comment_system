@@ -2,8 +2,14 @@
 
 require_once "app/Db.php";
 
+/**
+ * Class Comment
+ */
 class Comment
 {
+    /**
+     * @var Db
+     */
     protected $db;
 
     public function __construct()
@@ -11,6 +17,10 @@ class Comment
         $this->db = new Db();
     }
 
+    /**
+     * @param $postId
+     * @return array
+     */
     public function getPostComments($postId)
     {
         $request = $this->db->prepare('SELECT * FROM comments WHERE post_id = :postId AND is_spam = 0 ORDER BY date DESC');
@@ -19,6 +29,10 @@ class Comment
         return $request->fetchAll(\PDO::FETCH_OBJ);
     }
 
+    /**
+     * @param $data
+     * @return bool
+     */
     public function addComment($data)
     {
         $stmt = $this->db->prepare(
@@ -26,7 +40,10 @@ class Comment
         );
         return $stmt->execute($data);
     }
-    
+
+    /**
+     * @return array
+     */
     public function getCommentCensored()
     {
         $response = $this->db->query('SELECT * FROM comments WHERE is_spam = 1');

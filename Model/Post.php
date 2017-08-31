@@ -2,8 +2,14 @@
 
 require_once "app/Db.php";
 
+/**
+ * Class Post
+ */
 class Post
 {
+    /**
+     * @var Db
+     */
     protected $db;
 
     public function __construct()
@@ -11,6 +17,9 @@ class Post
         $this->db = new Db();
     }
 
+    /**
+     * @return array
+     */
     public function getAll()
     {
         $response = $this->db->query('SELECT * FROM posts ORDER BY author DESC');
@@ -18,6 +27,10 @@ class Post
         return $response->fetchAll(\PDO::FETCH_OBJ);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getById($id)
     {
         $request = $this->db->prepare('SELECT * FROM posts WHERE id = :postId LIMIT 1');
@@ -26,6 +39,9 @@ class Post
         return $request->fetch(\PDO::FETCH_OBJ);
     }
 
+    /**
+     * @return string
+     */
     public function getLastPostId()
     {
         $stmt = $this->db->query('SELECT MAX(id) FROM posts');
@@ -45,6 +61,10 @@ class Post
         }
     }
 
+    /**
+     * @param $data
+     * @return bool
+     */
     public function addPost($data)
     {
         $request = $this->db->prepare(

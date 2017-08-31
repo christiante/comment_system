@@ -5,12 +5,29 @@ require_once 'Model/Comment.php';
 require_once 'security/SecurityChecker.php';
 require_once 'app/Util.php';
 
+/**
+ * Class CommentController
+ */
 class CommentController extends Controller
 {
+    /**
+     * @var Comment
+     */
     private $comment;
+
+    /**
+     * @var SecurityChecker
+     */
     private $securityChecker;
+
+    /**
+     * @var Util
+     */
     private $util;
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->comment = new Comment();
@@ -20,24 +37,26 @@ class CommentController extends Controller
 
     public function index()
     {
-        //$posts = $this->post->getAll();
-        //$this->genererVue(array('posts' => $posts));
+
     }
 
+    /**
+     *
+     */
     public function addComment()
     {
-        if (!empty($this->request->getParameter("id")) && !empty($this->request->getParameter("comment"))
-            && !empty($this->request->getParameter("username"))
+        if ($this->request->parameterExist("id") && $this->request->parameterExist("comment")
+            && $this->request->parameterExist("username")
         ) {
             $postId = $this->request->getParameter("id");
             $comment = $this->request->getParameter("comment");
             $username = $this->request->getParameter("username");
             $date = new \DateTime('now');
             $is_spam = $this->securityChecker->wordsFilter($comment) == "" ? 0 : 1;
-            $html = "<div class=\"col-lg-4 comment-box\">
-                                <b>User: " . $username . "</b><br/>
-                                " . $comment . "<br/>
-            " . $this->util->timeElapsedString('now') . "<br/></div>";
+            $html = "<div class=\"comment-box\">
+                        <b>User: " . $username . "</b><br/>
+                                " . $comment . "<br/>" . $this->util->timeElapsedString('now') . "<br/>
+                     </div>";
             $filteredCommentData = json_encode(["status" => 1, "html" => $html]);
             $censoredCommentData = json_encode(["status" => 0]);
             $commentData = $this->securityChecker->wordsFilter($comment) == "" ? $filteredCommentData : $censoredCommentData;
@@ -58,7 +77,10 @@ class CommentController extends Controller
             }
         }
     }
-    
+
+    /**
+     *
+     */
     public function listsCommentCensored()
     {
         $comments = $this->comment->getCommentCensored();

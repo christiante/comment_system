@@ -1,8 +1,17 @@
 <?php
 
+/**
+ * Class Util
+ */
 class Util
 {
-    function timeElapsedString($datetime, $full = false) {
+    /**
+     * @param $datetime
+     * @param bool $full
+     * @return string
+     */
+    function timeElapsedString($datetime, $full = false)
+    {
         $now = new DateTime;
         $ago = new DateTime($datetime);
         $diff = $now->diff($ago);

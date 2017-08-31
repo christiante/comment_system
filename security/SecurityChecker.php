@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * Class SecurityChecker
+ */
 class SecurityChecker 
 {
-
+    /**
+     * @param $commentText
+     * @return string
+     */
     public function wordsFilter($commentText) 
     {
         $badWordsArray = file('security/keywords.txt');

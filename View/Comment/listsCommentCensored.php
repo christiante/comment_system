@@ -1,13 +1,8 @@
-<h2>Censored list</h2><br/>
-
-
+<h2>Censored list</h2>
 <?php foreach($comments as $comment) { ?>
-
 	<div class="col-lg-4">
 		<b>Author: <?php echo $comment->user; ?></b><br/>
-                <?php echo html_entity_decode($comment->text); ?><br/>
-                <?php echo $comment->date; ?><br/>
-
+        <?php echo html_entity_decode($comment->text); ?><br/>
+        <?php echo $comment->date; ?><br/>
 	</div>
-
 <?php } ?>

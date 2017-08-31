@@ -3,65 +3,66 @@
 require_once 'Request.php';
 require_once 'View/View.php';
 
+/**
+ * Class Router
+ */
 class Router
 {
     const CONTROLLER_PARAM_NAME = "controller";
 
-    // Route une requête entrante : exécute l'action associée
+    /**
+     *
+     */
     public function routeRequest()
     {
         try {
-            // Fusion des paramètres GET et POST de la requête
             $request = new Request(array_merge($_GET, $_POST));
-
             $controller = $this->creerControleur($request);
             $action = $this->creerAction($request);
-
             $controller->executerAction($action);
         }
         catch (Exception $e) {
-            $this->gererErreur($e);
+            echo $e->getMessage();
         }
     }
 
-    // Crée le contrôleur approprié en fonction de la requête reçue
+    /**
+     * @param Request $request
+     * @return mixed|string
+     * @throws Exception
+     */
     private function creerControleur(Request $request)
     {
-        $controller = "Post";  // Contrôleur par défaut
+        $controller = "Post";
         if ($request->parameterExist($this::CONTROLLER_PARAM_NAME)) {
             $controller = $request->getParameter($this::CONTROLLER_PARAM_NAME);
-            // Première lettre en majuscule
             $controller = ucfirst(strtolower($controller));
         }
-        // Création du nom du fichier du contrôleur
+
         $classController = $controller."Controller";
-        $fichierControleur = "Controller/" . $classController . ".php";
-        if (file_exists($fichierControleur)) {
-            // Instanciation du contrôleur adapté à la requête
-            require($fichierControleur);
+        $controllerFile = "Controller/" . $classController . ".php";
+        if (file_exists($controllerFile)) {
+            require($controllerFile);
             $controller = new $classController();
             $controller->setRequete($request);
             return $controller;
+        } else {
+            throw new Exception("Fichier '$controllerFile' introuvable");
         }
-        else
-            throw new Exception("Fichier '$fichierControleur' introuvable");
     }
 
-    // Détermine l'action à exécuter en fonction de la requête reçue
+    /**
+     * @param Request $request
+     * @return mixed|string
+     * @throws Exception
+     */
     private function creerAction(Request $request)
     {
-        $action = "show";  // Action par défaut
+        $action = "show";
         if ($request->parameterExist('action')) {
             $action = $request->getParameter('action');
         }
 
         return $action;
-    }
-
-    // Gère une erreur d'exécution (exception)
-    private function gererErreur(Exception $exception)
-    {
-        $vue = new View('erreur');
-        $vue->generate(array('msgErreur' => $exception->getMessage()));
     }
 }
