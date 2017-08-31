@@ -311,3 +311,23 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
     margin: 0 0 20px 0;
 }
 
+.col-lg-4{
+    margin-bottom: 10px;
+}
+
+.col-lg-4 b{
+    color: #000;
+}
+
+.user{
+    color: #A4AA04;
+    font-weight: bold;
+}
+
+.post{
+    color: #000;
+}
+
+.date{
+    color: #BBB;
+}

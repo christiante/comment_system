@@ -2,22 +2,21 @@
 <?php
     if (!empty($posts)) { ?>
     <div class="post-container">
-    <?php
-    foreach ($posts as $post) { ?>
-        <div class="col-lg-4">
-            <b>Author: <?php echo $post->author; ?></b><br/>
+        <?php foreach ($posts as $post) { ?>
+            <div class="col-lg-4">
+                <div class="user">Author: <?php echo $post->author; ?></div>
+                <div class="post"><?php echo substr($post->content, 0, 100) . '...'; ?></div>
+                <a href='?controller=post&action=show&id=<?php echo $post->id; ?>'>Read more and leave comment...</a>
+            </div>
 
-            <?php echo substr($post->content,0,100).'...'; ?><br/>
 
-            <a href='?controller=post&action=show&id=<?php echo $post->id; ?>'>Read more and leave comment...</a>
-        </div>
-<?php
-        } ?>
+        <?php }
+    ?>
     </div>
-<?php  } else { ?>
-        <p>No Post Available!<p>
+    <?php } else { ?>
+    <p>No Post Available!<p>
     <?php
-    }
+}
 ?>
 
 <h2>Add New Post</h2>

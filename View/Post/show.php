@@ -22,10 +22,9 @@
 <div class="comments-container">
     <?php foreach ($comments as $comment) { ?>
         <div class="col-lg-4 comment-box">
-            <b>User: <?php echo $comment->user; ?></b><br/>
-
-            <?php echo $comment->text; ?><br/>
-            <?php echo $util->timeElapsedString($comment->date); ?><br/>
+            <div class="user">User: <?php echo $comment->user; ?></div>
+            <div class="post"><?php echo $comment->text; ?></div>
+            <div class="date"><?php echo $util->timeElapsedString($comment->date); ?></div>
         </div>
     <?php }
     } else { ?>

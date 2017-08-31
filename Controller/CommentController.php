@@ -53,10 +53,10 @@ class CommentController extends Controller
             $username = $this->request->getParameter("username");
             $date = new \DateTime('now');
             $is_spam = $this->securityChecker->wordsFilter($comment) == "" ? 0 : 1;
-            $html = "<div class=\"comment-box\">
-                        <b>User: " . $username . "</b><br/>
-                                " . $comment . "<br/>" . $this->util->timeElapsedString('now') . "<br/>
-                     </div>";
+            $html = "<div class=\"col-lg-4 comment-box\">
+                                <div class=\"user\">User: " . $username . "</div>
+                                <div class=\"post\">" . $comment . "</div>
+                                <div class=\"date\">" . $this->util->timeElapsedString('now') . "</div>";
             $filteredCommentData = json_encode(["status" => 1, "html" => $html]);
             $censoredCommentData = json_encode(["status" => 0]);
             $commentData = $this->securityChecker->wordsFilter($comment) == "" ? $filteredCommentData : $censoredCommentData;

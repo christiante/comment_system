@@ -51,10 +51,10 @@ class PostController extends Controller
             $content = $this->request->getParameter("content");
 
             $html = "<div>
-                    <b>Author:: " . $author . "</b>
-                    <p>
+                    <div class='user'>Author:: " . $author . "</div>
+                    <div class='post'>
                     " . $content . "
-                    </p>
+                    </div>
                     </div><br>";
             $newPostData = json_encode(["status" => 1, "html" => $html]);
             $data = [
